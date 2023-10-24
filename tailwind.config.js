@@ -9,7 +9,8 @@ export default {
       "accent": "#AADF26",
       "card-color": "#A38C85",
       "card-dark": "#9C9717",
-      "temp" : "#824057"
+      "temp" : "#824057",
+      "text" : '#000000'
     },
   },
   plugins: [],
