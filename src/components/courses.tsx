@@ -1,10 +1,16 @@
 import React from "react";
 
-const Courses = () => {
+interface CoursesProps {
+  toggle: boolean;
+}
+
+const Courses: React.FC<CoursesProps> = ({ toggle }) => {
+  const paddingLeftClass = toggle ? "pl-80" : "pl-36";
+
   return (
-    <div className="flex justify-start pl-36 text-text">
+    <div className={`flex flex-col justify-start items-start text-text ${paddingLeftClass}`}>
       <h1 className="text-[40px]">Courses</h1>
-      <div className="flex flex-row justify-start items-center">
+      <div className="flex flex-col justify-start items-center">
         
       </div>
     </div>
@@ -12,3 +18,5 @@ const Courses = () => {
 };
 
 export default Courses;
+
+// 72 36

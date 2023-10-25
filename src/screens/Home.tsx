@@ -5,7 +5,6 @@ import {
   Sidebar,
   Menu,
   MenuItem,
-  SubMenu,
   sidebarClasses,
 } from "react-pro-sidebar";
 import { IoIosMenu } from "react-icons/io";
@@ -58,7 +57,7 @@ const Home: React.FC = () => {
         )}
       </div>
         <NavBar />
-        <Courses />
+        <Courses toggle={toggle}/>
     </div>
   );
 };
