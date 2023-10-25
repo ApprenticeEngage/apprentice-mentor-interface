@@ -19,12 +19,12 @@ const CourseSortDropdown: React.FC<CourseSortDropdownProps> = ({
 
   return (
     <div className="flex items-center space-x-2">
-      <label htmlFor="sort">Sort By:</label>
+      <label htmlFor="sort ">Sort By:</label>
       <select
         id="sort"
         value={selectedSort}
         onChange={handleSortChange}
-        className="px-2 py-1 border rounded-md focus:outline-none"
+        className="p-2 rounded-md focus:outline-none bg-primary"
       >
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
