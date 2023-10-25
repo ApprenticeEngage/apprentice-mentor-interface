@@ -12,7 +12,7 @@ const Home: React.FC = () => {
     setToggle(!toggle);
   };
   return (
-    <div className=" text-text ">
+    <div className=" text-text overflow-x-clip">
       <div className="absolute flex flex-row justify-start p-4 h-screen bg-primary">
         <div onClick={handleToggle}>
           {toggle ? null : <IoIosMenu size={30} />}

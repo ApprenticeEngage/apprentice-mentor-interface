@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBox from "./SearchBox";
 import CourseSortDropdown from "./dropDownSort";
+import CourseTile from "./CourseTile";
 
 interface CoursesProps {
   toggle: boolean;
@@ -22,7 +23,7 @@ const Courses: React.FC<CoursesProps> = ({ toggle }) => {
         <button className="absolute p-3 right-16 bg-accent rounded-lg text-text ml-96">NEW COURSE</button>
       </div>
       <div className="flex flex-col justify-start items-center pt-4">
-        
+        <CourseTile title="Vocation" status="Published"></CourseTile>
       </div>
     </div>
   );
