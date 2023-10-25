@@ -3,8 +3,8 @@ import React, { useState } from "react";
 // import Courses from "../components/courses";
 import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
 import { IoIosMenu } from "react-icons/io";
-import NavBar from "../components/navBar";
-import Courses from "../components/courses";
+import NavBar from "../components/Home/navBar";
+import Courses from "../components/Home/courses";
 
 const Home: React.FC = () => {
   const [toggle, setToggle] = useState(false);

@@ -21,7 +21,9 @@ const Courses: React.FC<CoursesProps> = ({ toggle }) => {
         </div>
         <button className="absolute p-3 right-16 bg-accent rounded-lg text-text ml-96">NEW COURSE</button>
       </div>
-      <div className="flex flex-col justify-start items-center pt-4"></div>
+      <div className="flex flex-col justify-start items-center pt-4">
+        
+      </div>
     </div>
   );
 };
