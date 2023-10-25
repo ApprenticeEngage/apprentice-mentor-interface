@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBox from "./SearchBox";
+import CourseSortDropdown from "./dropDownSort";
 
 interface CoursesProps {
   toggle: boolean;
@@ -12,7 +13,11 @@ const Courses: React.FC<CoursesProps> = ({ toggle }) => {
     <div className={`flex flex-col justify-start items-start text-text ${paddingLeftClass}`}>
       <h1 className="text-[40px]">Courses</h1>
       <div className="flex flex-col justify-start items-center pt-4">
+        <div className="flex flex-row">
         <SearchBox/>
+        <CourseSortDropdown onSortChange={()=>{}}/>
+        </div>
+
       </div>
     </div>
   );

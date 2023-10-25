@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 // import NavBar from "../components/navBar";
 // import Courses from "../components/courses";
-import {
-  Sidebar,
-  Menu,
-  MenuItem,
-  sidebarClasses,
-} from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
 import { IoIosMenu } from "react-icons/io";
 import NavBar from "../components/navBar";
 import Courses from "../components/courses";
@@ -18,16 +13,16 @@ const Home: React.FC = () => {
   };
   return (
     <div className=" text-text">
-      <div className="absolute flex flex-row justify-start p-4  h-screen bg-primary">
+      <div className="absolute flex flex-row justify-start p-4 h-screen bg-primary">
         <div onClick={handleToggle}>
           {toggle ? null : <IoIosMenu size={30} />}
         </div>
         {toggle && (
           <Sidebar
-            className="bg-text"
             rootStyles={{
               [`.${sidebarClasses.container}`]: {
                 backgroundColor: "#98B847",
+                
               },
             }}
           >
@@ -56,8 +51,8 @@ const Home: React.FC = () => {
           </Sidebar>
         )}
       </div>
-        <NavBar />
-        <Courses toggle={toggle}/>
+      <NavBar />
+      <Courses toggle={toggle} />
     </div>
   );
 };
