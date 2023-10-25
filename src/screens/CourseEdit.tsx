@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoArrowBackCircleOutline, IoSettings } from "react-icons/io5";
 
 const CourseEdit = () => {
+  const [selectedSection, setSelectedSection] = useState(""); // State to keep track of the selected section
+
+  // Function to handle the section click
+  const handleSectionClick = (section) => {
+    setSelectedSection(section);
+  };
+
   return (
     <div className="bg-light-bg  overflow-x-clip h-full w-full">
       {/* navbar */}
@@ -22,31 +29,61 @@ const CourseEdit = () => {
       </div>
 
       <div className="mx-16 mt-8 flex flex-row justify-between ">
-        <div className="nav m-4  flex flex-col  text-[22px] ">
+        <div className="nav m-4 flex flex-col text-[22px]">
           <nav className="bg-blue-500 p-4">
             <ul className="flex flex-col justify-start items-start space-y-2 text-text">
               <li>
-                <a href="#audience" className=" hover:bg-accent">
+                <a
+                  href="#audience"
+                  className={`p-1 ${
+                    selectedSection === "audience" ? "bg-accent" : ""
+                  } font-semibold hover:bg-accent`}
+                  onClick={() => handleSectionClick("audience")}
+                >
                   Audience
                 </a>
               </li>
               <li>
-                <a href="#schedule" className=" hover:bg-accent">
+                <a
+                  href="#schedule"
+                  className={`p-1 ${
+                    selectedSection === "schedule" ? "bg-accent" : ""
+                  } font-semibold hover:bg-accent`}
+                  onClick={() => handleSectionClick("schedule")}
+                >
                   Schedule
                 </a>
               </li>
               <li>
-                <a href="#curriculum" className=" hover:bg-accent">
+                <a
+                  href="#curriculum"
+                  className={`p-1 ${
+                    selectedSection === "curriculum" ? "bg-accent" : ""
+                  } font-semibold hover:bg-accent`}
+                  onClick={() => handleSectionClick("curriculum")}
+                >
                   Curriculum
                 </a>
               </li>
               <li>
-                <a href="#landing-page" className=" hover:bg-accent">
+                <a
+                  href="#landing-page"
+                  className={`p-1 ${
+                    selectedSection === "landing-page" ? "bg-accent" : ""
+                  } font-semibold hover:bg-accent`}
+                  onClick={() => handleSectionClick("landing-page")}
+                >
                   Landing Page
                 </a>
               </li>
               <li>
-                <a href="#pricing" className=" hover:bg-accent">
+                <a
+                  href="#pricing"
+                  className={`p-1 ${
+                    selectedSection === "pricing" ? "bg-accent" : ""
+                  } font-semibold hover:bg-accent `}
+                  onClick={() => handleSectionClick("pricing")}
+                >
                   Pricing
                 </a>
               </li>
