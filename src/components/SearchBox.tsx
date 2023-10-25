@@ -1,11 +1,24 @@
-import React from 'react'
+import React from "react";
+import { IoIosSearch } from "react-icons/io";
 
-const SearchBox = () => {
+const SearchBox:React.FC = () => {
   return (
-    <div>
-      SearchBox
+    <div className="flex flex-row items-center">
+      <input
+        type="text"
+        placeholder="Search..."
+        className="px-4 py-2 border border-gray-300 rounded-l-md text-accent"
+      />
+      <button
+        className=" text-white px-4 py-2 rounded-r-md"
+        onClick={() => {
+          // Handle search here
+        }}
+      >
+        <IoIosSearch size={24} />
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBox
+export default SearchBox;
