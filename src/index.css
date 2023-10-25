@@ -4,14 +4,13 @@
   font-weight: lighter;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #ece9f6;
 
-  font-synthesis: none;
+ 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+ 
 }
 
 

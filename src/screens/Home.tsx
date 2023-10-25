@@ -32,6 +32,7 @@ const Home: React.FC = () => {
                     color: disabled ? "#000000" : "#000000",
                     backgroundColor: active ? "#000000" : undefined,
                     ":hover": { backgroundColor: "#AADF26" },
+                    fontWeight: 'bold'
                   };
                 },
               }}

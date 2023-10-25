@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
+    fontFamily:{
+      'light': 'Assistant'
+    },
     colors: {
       "light-bg": "#ECE9F6",
       "primary": "#98B847",
