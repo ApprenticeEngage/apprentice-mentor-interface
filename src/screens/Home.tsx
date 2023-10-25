@@ -9,6 +9,8 @@ import {
   sidebarClasses,
 } from "react-pro-sidebar";
 import { IoIosMenu } from "react-icons/io";
+import NavBar from "../components/navBar";
+import Courses from "../components/courses";
 
 const Home: React.FC = () => {
   const [toggle, setToggle] = useState(false);
@@ -17,7 +19,7 @@ const Home: React.FC = () => {
   };
   return (
     <div className=" text-text">
-      <div className="flex flex-row justify-start p-4  h-screen bg-primary absolute">
+      <div className="absolute flex flex-row justify-start p-4  h-screen bg-primary">
         <div onClick={handleToggle}>
           {toggle ? null : <IoIosMenu size={30} />}
         </div>
@@ -32,13 +34,14 @@ const Home: React.FC = () => {
           >
             <Menu
               menuItemStyles={{
-                button: ({ level, active, disabled }) => {
+                button: ({ active, disabled }) => {
                   // only apply styles on first level elements of the tree
-                  if (level === 0)
-                    return {
-                      color: disabled ? "#98B847" : "#AADF26",
-                      backgroundColor: active ? "#ffffff" : undefined,
-                    };
+
+                  return {
+                    color: disabled ? "#000000" : "#000000",
+                    backgroundColor: active ? "#000000" : undefined,
+                    ":hover": { backgroundColor: "#AADF26" },
+                  };
                 },
               }}
             >
@@ -48,16 +51,14 @@ const Home: React.FC = () => {
               >
                 <IoIosMenu size={30} />
               </MenuItem>
-              <SubMenu label="Charts">
-                <MenuItem> Pie charts </MenuItem>
-                <MenuItem> Line charts </MenuItem>
-              </SubMenu>
               <MenuItem> Documentation </MenuItem>
               <MenuItem> Calendar </MenuItem>
             </Menu>
           </Sidebar>
         )}
       </div>
+        <NavBar />
+        <Courses />
     </div>
   );
 };
