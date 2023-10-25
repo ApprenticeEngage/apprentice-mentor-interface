@@ -12,17 +12,17 @@ const Courses: React.FC<CoursesProps> = ({ toggle }) => {
 
   return (
     <div
-      className={`flex flex-col justify-start items-start text-text ${paddingLeftClass} `}
+      className={`flex flex-col justify-start items-start text-text ${paddingLeftClass} w-full pr-16`}
     >
       <h1 className="text-[40px]">Courses</h1>
-      <div className="search flex items-center justify-between">
+      <div className="search flex items-center justify-between w-full">
         <div className="flex flex-row space-x-2">
           <SearchBox />
           <CourseSortDropdown onSortChange={() => {}} />
         </div>
-        <button className="absolute p-3 right-16 bg-accent rounded-lg text-text ml-96">NEW COURSE</button>
+        <button className=" p-3 right-16 bg-accent rounded-lg text-text ml-96">NEW COURSE</button>
       </div>
-      <div className="flex flex-col justify-start items-center pt-4">
+      <div className="flex flex-col justify-start items-center pt-4 w-full">
         <CourseTile title="Vocation" status="Published"></CourseTile>
       </div>
     </div>
