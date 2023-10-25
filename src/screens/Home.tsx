@@ -12,8 +12,8 @@ const Home: React.FC = () => {
     setToggle(!toggle);
   };
   return (
-    <div className=" text-text overflow-x-clip ">
-      <div className="absolute flex flex-row justify-start p-4 h-screen bg-primary">
+    <div className=" text-text overflow-x-clip h-full w-full">
+      <div className="fixed flex flex-row justify-start p-4 h-screen bg-primary">
         <div onClick={handleToggle}>
           {toggle ? null : <IoIosMenu size={30} />}
         </div>
@@ -22,15 +22,12 @@ const Home: React.FC = () => {
             rootStyles={{
               [`.${sidebarClasses.container}`]: {
                 backgroundColor: "#98B847",
-                
               },
             }}
           >
             <Menu
               menuItemStyles={{
                 button: ({ active, disabled }) => {
-                  // only apply styles on first level elements of the tree
-
                   return {
                     color: disabled ? "#000000" : "#000000",
                     backgroundColor: active ? "#000000" : undefined,
@@ -51,6 +48,7 @@ const Home: React.FC = () => {
           </Sidebar>
         )}
       </div>
+
       <NavBar />
       <Courses toggle={toggle} />
     </div>

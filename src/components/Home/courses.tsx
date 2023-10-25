@@ -2,6 +2,7 @@ import React from "react";
 import SearchBox from "./SearchBox";
 import CourseSortDropdown from "./dropDownSort";
 import CourseTile from "./CourseTile";
+import { courseData } from "../../constants/data";
 
 interface CoursesProps {
   toggle: boolean;
@@ -20,10 +21,14 @@ const Courses: React.FC<CoursesProps> = ({ toggle }) => {
           <SearchBox />
           <CourseSortDropdown onSortChange={() => {}} />
         </div>
-        <button className=" p-3 right-16 bg-accent rounded-lg text-text ml-96">NEW COURSE</button>
+        <button className=" p-3 right-16 bg-accent rounded-lg text-text ml-96">
+          NEW COURSE
+        </button>
       </div>
       <div className="flex flex-col justify-start items-center pt-4 w-full">
-        <CourseTile title="Vocation" status="Published"></CourseTile>
+        {courseData.map((course) => (
+          <CourseTile key={course.id} title={course.title} status={course.published} />
+        ))}   
       </div>
     </div>
   );
