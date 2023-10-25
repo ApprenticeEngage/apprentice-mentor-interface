@@ -8,6 +8,8 @@ export default {
     },
     colors: {
       "light-bg": "#ECE9F6",
+      'dark': '#080403',
+      'white': '#FFFFFF',
       "primary": "#98B847",
       "accent": "#AADF26",
       "card-color": "#A38C85",
