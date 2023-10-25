@@ -49,7 +49,7 @@ const Home: React.FC = () => {
         )}
       </div>
 
-      <NavBar />
+      <NavBar toggle={toggle}/>
       <Courses toggle={toggle} />
     </div>
   );

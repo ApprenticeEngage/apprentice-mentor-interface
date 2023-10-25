@@ -1,10 +1,17 @@
 import React from "react";
 import { BsPersonCircle } from "react-icons/bs";
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  toggle: boolean;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ toggle }) => {
+  const paddingLeftClass = toggle ? "pl-72" : "pl-20";
   return (
     <div className="flex flex-row justify-between items-center text-text w-screen min-h-fit pt-2 mb-8 pl-16 pr-16">
-      <h1 className="md:text-[36px]  sm:text-[22px] pl-20">
+      <h1
+        className={`md:text-[36px]  sm:text-[22px] ${paddingLeftClass}`}
+      >
         Instructor's Portal
       </h1>
       <div className="flex flex-row items-center absolute right-16">
