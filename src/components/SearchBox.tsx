@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosSearch } from "react-icons/io";
 
-const SearchBox:React.FC = () => {
+const SearchBox: React.FC = () => {
   return (
     <div className="flex flex-row items-center">
       <input
@@ -9,12 +9,7 @@ const SearchBox:React.FC = () => {
         placeholder="Search..."
         className="px-4 py-2 border border-gray-300 rounded-l-md text-accent"
       />
-      <button
-        className=" text-white px-4 py-2 rounded-r-md"
-        onClick={() => {
-          // Handle search here
-        }}
-      >
+      <button className=" text-white px-4 py-2 rounded-r-md" onClick={() => {}}>
         <IoIosSearch size={24} />
       </button>
     </div>
