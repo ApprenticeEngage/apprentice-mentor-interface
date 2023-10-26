@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const useCourseDifficulty = (minValue, maxValue) => {
+const useCourseDifficulty = (minValue:string, maxValue:string) => {
   const [courseDifficulty, setCourseDifficulty] = useState("");
 
-  const handleInputChange = (value) => {
+  const handleInputChange = (value:string) => {
     if (value >= minValue && value <= maxValue) {
       setCourseDifficulty(value);
     }
