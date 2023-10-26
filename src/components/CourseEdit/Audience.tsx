@@ -14,18 +14,18 @@ const Audience = () => {
   const handleAddPrerequisite = () => {
     setPrerequisites([...prerequisites, ""]);
   };
-  const handleRemoveLearningOutcome = (index) => {
+  const handleRemoveLearningOutcome = (index:number) => {
     const updatedLearningOutcomes = [...learningOutcomes];
     updatedLearningOutcomes.splice(index, 1);
     setLearningOutcomes(updatedLearningOutcomes);
   };
-  const handleRemovePrerequisite = (index) => {
+  const handleRemovePrerequisite = (index:number) => {
     const updatedPrerequisites = [...prerequisites];
     updatedPrerequisites.splice(index, 1);
     setPrerequisites(updatedPrerequisites);
   };
 
-  const handleInputChange = (index, e, type) => {
+  const handleInputChange = (index:number, e, type:string) => {
     if (type === "learningOutcome") {
       const updatedLearningOutcomes = [...learningOutcomes];
       updatedLearningOutcomes[index] = e.target.value;
