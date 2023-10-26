@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { IoPush } from "react-icons/io5";
 
 const Audience = () => {
@@ -73,11 +73,46 @@ const Audience = () => {
         </div>
       </div>
 
+      <h1 className="text-3xl mb-5 px-12 font-semibold">Pre-Requisites</h1>
       {/* pre-req */}
+      <div className="px-12 text-xl font-light flex flex-col mb-12">
+        <p className="mb-3">
+          What do you expect your apprentices to already know before the
+          training? Or what do you recommend them for preparation?
+        </p>
+        <div className="flex flex-row items-center">
+          <input
+            placeholder="Pre-Requisite"
+            className="text-accent rounded-lg p-2 grow"
+          />
+          <div className="hover:cursor-pointer">
+            <IoPush size={24} />
+          </div>
+        </div>
+      </div>
 
+      <h1 className="text-3xl mb-5 px-12 font-semibold">
+        Course Difficulty Level
+      </h1>
       {/* course difficulty */}
+      <div className="px-12 text-xl font-light flex flex-col mb-12">
+        <p className="mb-3">
+         How difficult would the course be for your targeted audience?
+         Give a number on a scale from 0-5
+        </p>
+        <div className="flex flex-row items-center">
+          <input
+            placeholder="Pre-Requisite"
+            className="text-accent rounded-lg p-2 grow"
+            type="number"
+          />
+          <div className="hover:cursor-pointer">
+            <IoPush size={24} />
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-export default Audience
+export default Audience;
