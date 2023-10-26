@@ -92,7 +92,7 @@ const CourseEdit = () => {
           </nav>
         </div>
 
-        <div className="w-full bg-primary ml-2 shadow-xl ">
+        <div className="w-full bg-primary ml-2 shadow-xl mb-10">
           <Audience />
         </div>
       </div>
