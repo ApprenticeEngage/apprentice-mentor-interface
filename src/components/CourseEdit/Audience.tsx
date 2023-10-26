@@ -64,6 +64,10 @@ const Audience = () => {
 
       {/* learning outcome */}
       <h1 className="text-3xl mb-5 px-12 font-semibold">Learning Outcomes</h1>
+      <p className="mb-4 text-center text-xl px-12 font-normal">
+        At the end of the course, what will your apprentices have learned? What
+        skills would they have gained? Enlist at least 4!
+      </p>
       <div className="px-12 text-xl font-light flex flex-col mb-12 w-3/4">
         {/* ... Other code ... */}
         {learningOutcomes.map((outcome, index) => (
@@ -98,8 +102,11 @@ const Audience = () => {
 
       {/* pre Requisite */}
       <h1 className="text-3xl mb-5 px-12 font-semibold">Pre-Requisites</h1>
+      <p className="mb-4 text-center text-xl px-12 font-normal">
+        What do you expect your apprentices to already know before the training?
+        Or what do you recommend them for preparation?
+      </p>
       <div className="px-12 text-xl font-light flex flex-col mb-12  w-3/4">
-        {/* ... Other code ... */}
         {prerequisites.map((prerequisite, index) => (
           <div className="flex flex-row items-center mb-3 w-full" key={index}>
             <input
