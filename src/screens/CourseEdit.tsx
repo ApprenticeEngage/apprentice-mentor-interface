@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoArrowBackCircleOutline, IoSettings } from "react-icons/io5";
+import Audience from "../components/CourseEdit/Audience";
 
 const CourseEdit = () => {
   const [selectedSection, setSelectedSection] = useState(""); // State to keep track of the selected section
@@ -29,8 +30,8 @@ const CourseEdit = () => {
       </div>
 
       <div className="mx-16 mt-8 flex flex-row justify-between ">
-        <div className="nav m-4 flex flex-col text-[22px]">
-          <nav className="bg-blue-500 p-4">
+        <div className="nav m-4 mr-3 flex flex-col text-[22px]">
+          <nav className="bg-blue-500 p-5">
             <ul className="flex flex-col justify-start items-start space-y-2 text-text">
               <li>
                 <a
@@ -70,10 +71,10 @@ const CourseEdit = () => {
                   href="#landing-page"
                   className={`p-1 ${
                     selectedSection === "landing-page" ? "bg-accent" : ""
-                  } font-semibold hover:bg-accent`}
+                  } font-semibold hover:bg-accent `}
                   onClick={() => handleSectionClick("landing-page")}
                 >
-                  Landing Page
+                  LandingPage
                 </a>
               </li>
               <li>
@@ -89,6 +90,10 @@ const CourseEdit = () => {
               </li>
             </ul>
           </nav>
+        </div>
+
+        <div className="w-full bg-primary ml-2 shadow-xl ">
+          <Audience />
         </div>
       </div>
     </div>
