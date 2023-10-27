@@ -56,19 +56,40 @@ const Curriculum = () => {
             {section.courseItems.map((courseItem, courseItemIndex) => (
               <div
                 key={courseItemIndex}
-                className="px-10 bg-primary border-b-dark border-[2px] w-11/12 ml-6 mb-2 flex flex-row items-start p-3"
+                className="px-10 bg-primary border-b-dark border-[2px] w-11/12 ml-6 mb-2 flex flex-row items-center justify-between p-3"
               >
-                <h2 className="text-xl font-bold mr-6">
-                  {courseItem instanceof Lesson ? `Lesson: ` : `Test: `}
-                </h2>
-                <div >
-                <h2 className="text-xl font-bold">{courseItem.title}</h2>
-                <IoPencilSharp size={24}/>
+                <div className="flex flex-row items-center p-3">
+                  <h2 className="text-xl font-bold mr-6">
+                    {courseItem instanceof Lesson ? `Lesson: ` : `Test: `}
+                  </h2>
+                  <h2 className="text-xl font-bold mr-3">{courseItem.title}</h2>
+                </div>
+
+                <div>
+                  <button
+                    className=" bg-accent p-2 rounded-lg text-text font-bold text-lg mr-3"
+                    onClick={()=>{}}
+                  >
+                    Edit Title
+                  </button>
+                  <button
+                    className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
+                    onClick={()=>{}}
+                  >
+                    + Content
+                  </button>
                 </div>
               </div>
             ))}
 
-            <Buttons onAddListClick={()=>{addChapter(sectionIndex)}} onAddTestsClick={()=>{addTest(sectionIndex)}} />
+            <Buttons
+              onAddListClick={() => {
+                addChapter(sectionIndex);
+              }}
+              onAddTestsClick={() => {
+                addTest(sectionIndex);
+              }}
+            />
           </div>
         ))}
       </div>
