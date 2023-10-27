@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { LatLng, latLng, LatLngTuple } from "leaflet";
+import { IoCheckbox, IoWarning } from "react-icons/io5";
 import "leaflet/dist/leaflet.css";
 import React, {
   useState,
@@ -16,6 +17,7 @@ import {
   useMap,
   useMapEvents,
 } from "react-leaflet";
+import { green } from "@mui/material/colors";
 
 //global var to be stored in DB
 let selectedposition;
@@ -79,8 +81,13 @@ const Map = () => {
   const [showIcon, setShowIcon] = useState(false);
 
   const handleButtonClick = () => {
-    console.log(selectedposition);
-    setShowIcon(true);
+    if(selectedposition === undefined){
+      setShowIcon(false)
+    }else{
+      setShowIcon(true);
+      console.log(selectedposition);
+    }
+    
   };
 
   return (
@@ -98,13 +105,20 @@ const Map = () => {
         <DraggableMarker />
       </MapContainer>
       <div className="flex flex-row justify-start items-center">
-      <button
-        className="bg-card-dark h-fit rounded-lg p-5 ml-5 font-bold"
-        onClick={handleButtonClick}
-      >
-        Confirm position!
-      </button>
-      {showIcon && <FaCheckCircle size={30} color="green" />}
+        <button
+          className="bg-card-dark h-fit rounded-lg p-5 ml-5 font-bold"
+          onClick={handleButtonClick}
+        >
+          Confirm position!
+        </button>
+        {showIcon ? (
+          <IoCheckbox size={30} color={green} />
+        ) : (
+          <div>
+            <IoWarning size={30} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
