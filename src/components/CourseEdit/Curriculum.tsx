@@ -1,45 +1,21 @@
 import React, { useState } from "react";
+import { sections_data } from "../../constants/data";
+import { Lesson, Test } from "../../types/courseItem";
 
 const Curriculum = () => {
-  const [sections, setSections] = useState([
-    {
-      title: "Section 1",
-      name: "Instruction",
-      learningOutcome: "Learning outcome of Section 1",
-      lessons: [{
-        title: "Hello World",
-        desc: "Empty!",
-        resources: []
-      }],
-      tests: [{
-        topic : "FOP",
-        date: "23-2-10",
-      }],
-    },
-    {
-      title: "Section 2",
-      name: "Wireshark",
-      learningOutcome: "Learning outcome of Section 2",
-      lessons: [],
-      tests: [],
-    },
-  ]);
+  const [sections, setSections] = useState(sections_data);
 
   const addChapter = (sectionIndex) => {
-    // Create a new chapter and add it to the specified section
     const newSections = [...sections];
-    newSections[sectionIndex].lessons.push({
-      title: "New Lesson",
-      desc: "",
-      resources: [],
-    });
+    newSections[sectionIndex].courseItems.push(
+      new Lesson("New Lesson", "", "Empty!", [])
+    );
     setSections(newSections);
   };
 
   const addTest = (sectionIndex) => {
-    // Create a new test and add it to the specified section
     const newSections = [...sections];
-    newSections[sectionIndex].tests.push({ title: "New Test", date: "" });
+    newSections[sectionIndex].courseItems.push(new Test("New Test", "", "23-2-10"));
     setSections(newSections);
   };
 
@@ -74,22 +50,23 @@ const Curriculum = () => {
             </div>
 
             <div className="px-10 bg-primary border-b-dark border-[2px] w-full ml-6">
-              {section.lessons.map((chapter, chapterIndex) => (
-                <div key={chapterIndex} className="flex flex-row items-start p-3">
-                  <h2 className="text-xl font-bold mr-6">{`Chapter ${chapterIndex}`}</h2>
-                  <h2 className="text-xl font-bold">{chapter.title}</h2>
+              {section.courseItems.map((courseItem, courseItemIndex) => (
+                <div
+                  key={courseItemIndex}
+                  className="flex flex-row items-start p-3"
+                >
+                  <h2 className="text-xl font-bold mr-6">
+                    {courseItem instanceof Lesson
+                      ? `Lesson ${courseItemIndex}`
+                      : `Test ${courseItemIndex}`}
+                  </h2>
+                  <h2 className="text-xl font-bold">{courseItem.title}</h2>
                 </div>
               ))}
             </div>
 
             <button onClick={() => addTest(sectionIndex)}>Add Test</button>
             <button onClick={() => addChapter(sectionIndex)}>Add Lesson</button>
-            {section.tests.map((test, testIndex) => (
-              <div key={testIndex}>
-                <h3>{test.title}</h3>
-                <p>Date: {test.date}</p>
-              </div>
-            ))}
           </div>
         ))}
       </div>

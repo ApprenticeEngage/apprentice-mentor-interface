@@ -45,7 +45,7 @@ export const courseData = [
   },
 ];
 
-export const sections: Section[] = [
+export const sections_data: Section[] = [
   {
     title: "Section 1",
     name: "Instruction",
