@@ -3,6 +3,8 @@ import { IoPush } from "react-icons/io5";
 import useCourseDifficulty from "../../hooks/courseDiffHook";
 import ScheduleSelector from "react-schedule-selector";
 import Table from "./Table";
+import Map from "./Map";
+
 
 const Schedule = () => {
   const [schedule, setSchedule] = useState([]);
@@ -52,10 +54,22 @@ const Schedule = () => {
         Generic Weekly Schedule
       </h1>
       <p className="mb-4 text-center text-xl px-12 font-normal">
-        A tentative weekly schedule for your sessions with your apprentices. Don't worry you can change it on adhoc basis later!
+        A tentative weekly schedule for your sessions with your apprentices.
+        Don't worry you can change it on adhoc basis later!
       </p>
       <div className="px-12 rounded-lg mb-12">
         <Table />
+      </div>
+
+      {/* Location */}
+      <h1 className="text-3xl mb-5 px-12 font-semibold">
+        Location of Instruction
+      </h1>
+      <p className="mb-4 text-center text-xl px-12 font-normal">
+        Where would you be conducting your teaching sessions?
+      </p>
+      <div className="px-12 rounded-lg mb-12 w-8/12">
+        <Map/>
       </div>
     </div>
   );

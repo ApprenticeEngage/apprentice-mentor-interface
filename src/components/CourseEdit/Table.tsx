@@ -14,7 +14,7 @@ const Table = () => {
     }
     updatedTimings[day][type] = time;
     console.log(updatedTimings);
-    
+
     setTimings(updatedTimings);
   };
 
