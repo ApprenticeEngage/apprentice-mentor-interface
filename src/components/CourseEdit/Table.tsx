@@ -10,7 +10,10 @@ const Table = () => {
               Weekdays
             </th>
             <th className="bg-[#5B5B5B] text-white p-2 border border-[#404040]">
-              Timings
+              Timing Start
+            </th>
+            <th className="bg-[#5B5B5B] text-white p-2 border border-[#404040]">
+              Lesson End
             </th>
           </tr>
         </thead>
@@ -20,6 +23,9 @@ const Table = () => {
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
               8:00 AM
             </td>
+            <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+              9:00 AM
+            </td>
           </tr>
           <tr>
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
@@ -27,6 +33,9 @@ const Table = () => {
             </td>
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
               9:00 AM
+            </td>
+            <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+              10:00 AM
             </td>
           </tr>
           <tr>
@@ -36,6 +45,9 @@ const Table = () => {
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
               10:00 AM
             </td>
+            <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+              11:00 AM
+            </td>
           </tr>
           <tr>
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
@@ -44,11 +56,17 @@ const Table = () => {
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
               11:00 AM
             </td>
+            <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+              12:00 PM
+            </td>
           </tr>
           <tr>
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">Friday</td>
             <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
-              12:00 PM
+              <TimePicker label="Basic time picker" />
+            </td>
+            <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+              1:00 PM
             </td>
           </tr>
         </tbody>
