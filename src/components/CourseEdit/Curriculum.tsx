@@ -58,8 +58,8 @@ const Curriculum = () => {
               >
                 <h2 className="text-xl font-bold mr-6">
                   {courseItem instanceof Lesson
-                    ? `Lesson ${courseItemIndex}`
-                    : `Test ${courseItemIndex}`}
+                    ? `Lesson: `
+                    : `Test: `}
                 </h2>
                 <h2 className="text-xl font-bold">{courseItem.title}</h2>
               </div>
