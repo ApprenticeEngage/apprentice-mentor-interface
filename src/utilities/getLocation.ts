@@ -6,7 +6,7 @@ export default function getLocation(callback) {
         longitude: position.coords.longitude,
       };
       callback(response);
-    });
+    },function(){} , {enableHighAccuracy: true});
   } else {
     console.log("Permission not granted");
   }
