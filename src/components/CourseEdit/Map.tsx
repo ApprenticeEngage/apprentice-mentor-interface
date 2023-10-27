@@ -7,10 +7,21 @@ import React, {
   useRef,
   useEffect,
 } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
 
-function LocationMarker() {
+
+function DraggableMarker() {
+  const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(null);
+  const markerRef = useRef(null);
+
   const [bbox, setBbox] = useState([]);
 
   const map = useMap();
@@ -26,24 +37,6 @@ function LocationMarker() {
     });
   }, [map]);
 
-  return position === null ? null : (
-    <Marker position={position}>
-      <Popup>
-        You are here. <br />
-        Map bbox: <br />
-        <b>Southwest lng</b>: {bbox[0]} <br />
-        <b>Southwest lat</b>: {bbox[1]} <br />
-        <b>Northeast lng</b>: {bbox[2]} <br />
-        <b>Northeast lat</b>: {bbox[3]}
-      </Popup>
-    </Marker>
-  );
-}
-
-function DraggableMarker() {
-  const [draggable, setDraggable] = useState(false);
-  const [position, setPosition] = useState([31.295026, 70.922667]);
-  const markerRef = useRef(null);
   const eventHandlers = useMemo(
     () => ({
       dragend() {
@@ -59,22 +52,30 @@ function DraggableMarker() {
     setDraggable((d) => !d);
   }, []);
 
-  return (
-    <Marker
-      draggable={draggable}
-      eventHandlers={eventHandlers}
-      position={position}
-      ref={markerRef}
-    >
-      <Popup minWidth={90}>
-        <span onClick={toggleDraggable}>
-          {draggable
-            ? "Marker is draggable"
-            : "Click here to make marker draggable"}
-        </span>
-      </Popup>
-    </Marker>
-  );
+   return position === null ? null : (
+     <Marker
+       draggable={draggable}
+       eventHandlers={eventHandlers}
+       position={position}
+       ref={markerRef}
+     >
+       <Popup minWidth={90}>
+         <Popup>
+           You are here. <br />
+           Map bbox: <br />
+           <b>Southwest lng</b>: {bbox[0]} <br />
+           <b>Southwest lat</b>: {bbox[1]} <br />
+           <b>Northeast lng</b>: {bbox[2]} <br />
+           <b>Northeast lat</b>: {bbox[3]}
+         </Popup>
+         <span onClick={toggleDraggable}>
+           {draggable
+             ? "Marker is draggable"
+             : "Click here to make marker draggable"}
+         </span>
+       </Popup>
+     </Marker>
+   );
 }
 
 const Map = () => {
@@ -89,7 +90,6 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <LocationMarker />
       <DraggableMarker />
     </MapContainer>
   );
