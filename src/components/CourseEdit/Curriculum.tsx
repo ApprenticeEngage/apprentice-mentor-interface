@@ -5,7 +5,7 @@ import { Lesson, Test } from "../../types/courseItem";
 const Curriculum = () => {
   const [sections, setSections] = useState(sections_data);
 
-  const addChapter = (sectionIndex) => {
+  const addChapter = (sectionIndex: number) => {
     const newSections = [...sections];
     newSections[sectionIndex].courseItems.push(
       new Lesson("New Lesson", "", "Empty!", [])
@@ -13,9 +13,11 @@ const Curriculum = () => {
     setSections(newSections);
   };
 
-  const addTest = (sectionIndex) => {
+  const addTest = (sectionIndex: number) => {
     const newSections = [...sections];
-    newSections[sectionIndex].courseItems.push(new Test("New Test", "", "23-2-10"));
+    newSections[sectionIndex].courseItems.push(
+      new Test("New Test", "", "23-2-10")
+    );
     setSections(newSections);
   };
 
@@ -49,21 +51,19 @@ const Curriculum = () => {
               <p className="text-lg font-bold">{section.learningOutcome}</p>
             </div>
 
-            <div className="px-10 bg-primary border-b-dark border-[2px] w-full ml-6">
-              {section.courseItems.map((courseItem, courseItemIndex) => (
-                <div
-                  key={courseItemIndex}
-                  className="flex flex-row items-start p-3"
-                >
-                  <h2 className="text-xl font-bold mr-6">
-                    {courseItem instanceof Lesson
-                      ? `Lesson ${courseItemIndex}`
-                      : `Test ${courseItemIndex}`}
-                  </h2>
-                  <h2 className="text-xl font-bold">{courseItem.title}</h2>
-                </div>
-              ))}
-            </div>
+            {section.courseItems.map((courseItem, courseItemIndex) => (
+              <div
+                key={courseItemIndex}
+                className="px-10 bg-primary border-b-dark border-[2px] w-full ml-6 mb-2 flex flex-row items-start p-3"
+              >
+                <h2 className="text-xl font-bold mr-6">
+                  {courseItem instanceof Lesson
+                    ? `Lesson ${courseItemIndex}`
+                    : `Test ${courseItemIndex}`}
+                </h2>
+                <h2 className="text-xl font-bold">{courseItem.title}</h2>
+              </div>
+            ))}
 
             <button onClick={() => addTest(sectionIndex)}>Add Test</button>
             <button onClick={() => addChapter(sectionIndex)}>Add Lesson</button>
