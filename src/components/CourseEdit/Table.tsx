@@ -28,13 +28,13 @@ const Table = () => {
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Starting Time"
                 />
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Ending Time"
                 />
               </td>
@@ -45,13 +45,13 @@ const Table = () => {
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Starting Time"
                 />
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Ending Time"
                 />
               </td>
@@ -62,13 +62,13 @@ const Table = () => {
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Starting Time"
                 />
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Ending Time"
                 />
               </td>
@@ -79,13 +79,13 @@ const Table = () => {
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Starting Time"
                 />
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Ending Time"
                 />
               </td>
@@ -96,13 +96,47 @@ const Table = () => {
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
                   label="Starting Time"
                 />
               </td>
               <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
                 <TimePicker
-                  className="bg-[#5B5B5B] rounded-xl"
+                  className="bg-[#7e7878] rounded-xl"
+                  label="Ending Time"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+                Saturday
+              </td>
+              <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+                <TimePicker
+                  className="bg-[#7e7878] rounded-xl"
+                  label="Starting Time"
+                />
+              </td>
+              <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+                <TimePicker
+                  className="bg-[#7e7878] rounded-xl"
+                  label="Ending Time"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+                Sunday
+              </td>
+              <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+                <TimePicker
+                  className="bg-[#7e7878] rounded-xl"
+                  label="Starting Time"
+                />
+              </td>
+              <td className="bg-[#404040] p-2 border border-[#5B5B5B]">
+                <TimePicker
+                  className="bg-[#7e7878] rounded-xl"
                   label="Ending Time"
                 />
               </td>
