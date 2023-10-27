@@ -68,7 +68,7 @@ const Schedule = () => {
       <p className="mb-4 text-center text-xl px-12 font-normal">
         Where would you be conducting your teaching sessions?
       </p>
-      <div className="px-12 rounded-lg mb-12 w-8/12">
+      <div className="px-12 rounded-lg mb-12 w-full">
         <Map/>
       </div>
     </div>
