@@ -51,8 +51,11 @@ const Schedule = () => {
       <h1 className="text-3xl mb-5 px-12 font-semibold">
         Generic Weekly Schedule
       </h1>
-      <div className="px-12 rounded-lg">
-        <Table/>
+      <p className="mb-4 text-center text-xl px-12 font-normal">
+        A tentative weekly schedule for your sessions with your apprentices. Don't worry you can change it on adhoc basis later!
+      </p>
+      <div className="px-12 rounded-lg mb-12">
+        <Table />
       </div>
     </div>
   );
