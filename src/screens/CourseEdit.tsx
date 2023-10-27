@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { IoArrowBackCircleOutline, IoSettings } from "react-icons/io5";
 import Audience from "../components/CourseEdit/Audience";
+import { jsx } from "@emotion/react";
+import Schedule from "../components/CourseEdit/Schedule";
+
 
 const CourseEdit = () => {
   const [selectedSection, setSelectedSection] = useState(""); // State to keep track of the selected section
 
   // Function to handle the section click
-  const handleSectionClick = (section) => {
+  const handleSectionClick = (section:jsx) => {
     setSelectedSection(section);
   };
 
@@ -93,7 +96,7 @@ const CourseEdit = () => {
         </div>
 
         <div className="w-full bg-primary ml-2 shadow-xl mb-10">
-          <Audience />
+          <Schedule />
         </div>
       </div>
     </div>
