@@ -73,4 +73,13 @@ class Test extends CourseItem {
 }
 
 
-export {CourseItem, Lesson, Test};
+type Section = {
+  title: string;
+  name: string;
+  learningOutcome: string;
+  courseItems: CourseItem[];
+};
+
+
+
+export {CourseItem, Lesson, Test, Section};

@@ -1,3 +1,6 @@
+import { Lesson, Section, Test } from "../types/courseItem";
+
+
 export const courseData = [
   {
     id: "1",
@@ -39,5 +42,23 @@ export const courseData = [
     recommendations: 56,
     author: "Jane Smith",
     published: "draft", // or "published"
+  },
+];
+
+export const sections: Section[] = [
+  {
+    title: "Section 1",
+    name: "Instruction",
+    learningOutcome: "Learning outcome of Section 1",
+    courseItems: [
+      new Lesson("Hello World", "Content URL", "Empty!", []),
+      new Test("FOP", "Test Topic", "23-2-10"),
+    ],
+  },
+  {
+    title: "Section 2",
+    name: "Wireshark",
+    learningOutcome: "Learning outcome of Section 2",
+    courseItems: [],
   },
 ];
