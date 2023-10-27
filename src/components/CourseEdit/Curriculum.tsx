@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { sections_data } from "../../constants/data";
 import { Lesson, Test } from "../../types/courseItem";
 import Buttons from "../../utilities/ButtonGroup";
-import { IoRemoveCircle, IoPencilSharp } from "react-icons/io5";
+import { IoRemoveCircle, IoPush } from "react-icons/io5";
 
 const Curriculum = () => {
   const [sections, setSections] = useState(sections_data);
@@ -93,17 +93,27 @@ const Curriculum = () => {
 
                 {/* appears when edit btn is clicked */}
                 {courseItemIndex === editingIndex && editable ? (
-                  <div className="mt-5 flex flex-col items-start px-3">
-                    <input
-                      type="text"
-                      placeholder="title"
-                      className="text-accent p-3 font-bold text-lg rounded-lg mb-2"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Description"
-                      className="text-accent p-3 font-bold text-lg rounded-lg"
-                    />
+                  <div className="mt-5 flex flex-col items-start px-3 w-full">
+                    <div className="flex flex-row items-center w-full">
+                      <input
+                        type="text"
+                        placeholder="title"
+                        className="text-accent p-3 font-bold text-lg rounded-lg mb-2 mr-3 w-4/12"
+                      />
+                      <div className="hover:cursor-pointer">
+                        <IoPush size={24} />
+                      </div>
+                    </div>
+                    <div className="flex flex-row items-center w-full">
+                      <input
+                        type="text"
+                        placeholder="Description"
+                        className="text-accent p-3 font-bold text-lg rounded-lg mb-2 mr-3 w-9/12"
+                      />
+                      <div className="hover:cursor-pointer">
+                        <IoPush size={24} />
+                      </div>
+                    </div>
                   </div>
                 ) : null}
               </div>
