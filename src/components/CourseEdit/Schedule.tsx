@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { IoPush } from "react-icons/io5";
 import useCourseDifficulty from "../../hooks/courseDiffHook";
+import ScheduleSelector from "react-schedule-selector";
+import Table from "./Table";
 
 const Schedule = () => {
+  const [schedule, setSchedule] = useState([]);
+  const handleScheduleChange = (newSchedule:any) => {
+    setSchedule(newSchedule);
+  };
   const [setMonth, setMonthDuration] = useCourseDifficulty(0, 12);
   const [setDays, setDaysDuration] = useCourseDifficulty(0, 30);
 
@@ -14,11 +20,13 @@ const Schedule = () => {
       </div>
 
       {/* Expected Completion Time */}
-      <h1 className="text-3xl mb-5 px-12 font-semibold">Learning Outcomes</h1>
+      <h1 className="text-3xl mb-5 px-12 font-semibold">
+        Course Completion Duration
+      </h1>
       <p className="mb-4 text-center text-xl px-12 font-normal">
         Time interval in which the vocational training would be completed?
       </p>
-      <div className="flex flex-row w-fit justify-evenly px-12 items-center">
+      <div className="flex flex-row w-fit mb-12 justify-evenly px-12 items-center">
         <input
           placeholder="Months (0 possible too)"
           className="text-accent rounded-lg p-2 grow mr-4"
@@ -37,6 +45,14 @@ const Schedule = () => {
         <div className="hover:cursor-pointer">
           <IoPush size={24} />
         </div>
+      </div>
+
+      {/* Weekly Schedule */}
+      <h1 className="text-3xl mb-5 px-12 font-semibold">
+        Generic Weekly Schedule
+      </h1>
+      <div className="px-12 rounded-lg">
+        <Table/>
       </div>
     </div>
   );
