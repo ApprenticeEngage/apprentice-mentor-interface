@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { sections_data } from "../../constants/data";
 import { Lesson, Test } from "../../types/courseItem";
+import Buttons from "../../utilities/ButtonGroup";
 
 const Curriculum = () => {
   const [sections, setSections] = useState(sections_data);
@@ -57,16 +58,13 @@ const Curriculum = () => {
                 className="px-10 bg-primary border-b-dark border-[2px] w-full ml-6 mb-2 flex flex-row items-start p-3"
               >
                 <h2 className="text-xl font-bold mr-6">
-                  {courseItem instanceof Lesson
-                    ? `Lesson: `
-                    : `Test: `}
+                  {courseItem instanceof Lesson ? `Lesson: ` : `Test: `}
                 </h2>
                 <h2 className="text-xl font-bold">{courseItem.title}</h2>
               </div>
             ))}
 
-            <button onClick={() => addTest(sectionIndex)}>Add Test</button>
-            <button onClick={() => addChapter(sectionIndex)}>Add Lesson</button>
+            <Buttons onAddListClick={()=>{addChapter(sectionIndex)}} onAddTestsClick={()=>{addTest(sectionIndex)}} />
           </div>
         ))}
       </div>
