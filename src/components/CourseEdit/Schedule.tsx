@@ -5,10 +5,9 @@ import ScheduleSelector from "react-schedule-selector";
 import Table from "./Table";
 import Map from "./Map";
 
-
 const Schedule = () => {
   const [schedule, setSchedule] = useState([]);
-  const handleScheduleChange = (newSchedule:any) => {
+  const handleScheduleChange = (newSchedule: any) => {
     setSchedule(newSchedule);
   };
   const [setMonth, setMonthDuration] = useCourseDifficulty(0, 12);
@@ -69,7 +68,7 @@ const Schedule = () => {
         Where would you be conducting your teaching sessions?
       </p>
       <div className="px-12 rounded-lg mb-12 w-full">
-        <Map/>
+        <Map />
       </div>
     </div>
   );

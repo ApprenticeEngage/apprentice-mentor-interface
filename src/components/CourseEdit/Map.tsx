@@ -81,13 +81,12 @@ const Map = () => {
   const [showIcon, setShowIcon] = useState(false);
 
   const handleButtonClick = () => {
-    if(selectedposition === undefined){
-      setShowIcon(false)
-    }else{
+    if (selectedposition === undefined) {
+      setShowIcon(false);
+    } else {
       setShowIcon(true);
       console.log(selectedposition);
     }
-    
   };
 
   return (

@@ -3,6 +3,8 @@ import { IoArrowBackCircleOutline, IoSettings } from "react-icons/io5";
 import Audience from "../components/CourseEdit/Audience";
 import { jsx } from "@emotion/react";
 import Schedule from "../components/CourseEdit/Schedule";
+import Curriculum from "../components/CourseEdit/Curriculum";
+
 
 
 const CourseEdit = () => {
@@ -96,7 +98,7 @@ const CourseEdit = () => {
         </div>
 
         <div className="w-full bg-primary ml-2 shadow-xl mb-10">
-          <Schedule />
+          <Curriculum />
         </div>
       </div>
     </div>
