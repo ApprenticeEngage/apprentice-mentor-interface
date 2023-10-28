@@ -131,9 +131,10 @@ const Curriculum = () => {
                     <hr className="border-[1px] rounded-xl w-full mb-5" />
                     <div className="flex flex-col items-start mb-3 w-full">
                       <h1 className="text-md mb-2  font-semibold">
-                        Upload either a
+                        <span className="text-xl font-bold mr-9">UPLOAD</span>
+                        Course Content : Could be
                       </h1>
-                      <ul className="flex flex-row items-start justify-evenly w-1/2 list-disc font-normal">
+                      <ul className="flex flex-row items-start justify-evenly w-1/2 list-disc  text-red font-bold">
                         <li>Video</li>
                         <li>Article</li>
                         <li>PPT presentation</li>
@@ -163,6 +164,20 @@ const Curriculum = () => {
                       </form>
                     </div>
                     <hr className="border-[1px] rounded-xl mt-6 w-full" />
+                    <div className="flex flex-col items-start mb-3 w-full mt-3">
+                      <div className="flex flex-col items-start mb-3 w-full">
+                        <h1 className="text-md mb-2  font-semibold">
+                          <span className="text-xl font-bold mr-3">
+                            OPTIONAL
+                          </span>{" "}
+                          Upload Resources related to the Lesson: Could be
+                        </h1>
+                        <ul className="flex flex-row items-start justify-evenly w-1/2 list-disc  text-red font-bold">
+                          <li>Document</li>
+                          <li>URL</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 ) : null}
               </div>

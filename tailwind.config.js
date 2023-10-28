@@ -15,7 +15,8 @@ export default {
       "card-color": "#A38C85",
       "card-dark": "#9C9717",
       "temp" : "#824057",
-      "text" : '#000000'
+      "text" : '#000000',
+      "red": "#FF0000"
     },
   },
   plugins: [],
