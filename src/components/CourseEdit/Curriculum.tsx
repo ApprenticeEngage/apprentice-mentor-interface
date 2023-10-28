@@ -179,6 +179,18 @@ const Curriculum = () => {
     setEditable(true);
   };
 
+  //test states
+  const [editTest, setEditTest] = useState(false);
+
+  const handleEditTest = (courseItemIndex) => {
+    const newContentVisibilities = [...contentVisibilities];
+    newContentVisibilities[courseItemIndex] =
+      !newContentVisibilities[courseItemIndex];
+    setContentVisibilities(newContentVisibilities);
+    setContentIndex(courseItemIndex);
+    setEditable(!editable);
+    setEditingIndex(courseItemIndex);
+  };
   //test date
   const [testDate, setTestDate] = useState(null);
 
@@ -234,20 +246,31 @@ const Curriculum = () => {
                       </h2>
                     </div>
 
-                    <div>
-                      <button
-                        className=" bg-accent p-2 rounded-lg text-text font-bold text-lg mr-3"
-                        onClick={() => handleEdit(courseItemIndex)}
-                      >
-                        Edit Title
-                      </button>
-                      <button
-                        className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
-                        onClick={() => handleContent(courseItemIndex)}
-                      >
-                        + Content
-                      </button>
-                    </div>
+                    {courseItem instanceof Lesson ? (
+                      <div>
+                        <button
+                          className=" bg-accent p-2 rounded-lg text-text font-bold text-lg mr-3"
+                          onClick={() => handleEdit(courseItemIndex)}
+                        >
+                          Edit Title
+                        </button>
+                        <button
+                          className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
+                          onClick={() => handleContent(courseItemIndex)}
+                        >
+                          + Content
+                        </button>
+                      </div>
+                    ) : courseItem instanceof Test ? (
+                      <div>
+                        <button
+                          className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
+                          onClick={() => handleEditTest(courseItemIndex)}
+                        >
+                          Edit Test
+                        </button>
+                      </div>
+                    ) : null}
                   </div>
                   {courseItemIndex == editingIndex && desc && (
                     <div className="flex flex-col text-text items-start">
@@ -260,7 +283,7 @@ const Curriculum = () => {
                   )}
 
                   {/* appears when edit btn is clicked */}
-                  {courseItemIndex === editingIndex && editable ? (
+                  {courseItemIndex === editingIndex && (courseItem instanceof Lesson) && editable ? (
                     <div className="mt-5 flex flex-col items-start px-3 w-full">
                       <div className="flex flex-row items-center w-full">
                         <input
@@ -426,9 +449,31 @@ const Curriculum = () => {
                           <input
                             type="text"
                             placeholder="Topic"
+                            onChange={handleTitleChange}
                             className="text-accent p-3 font-bold text-lg rounded-lg mb-2 mr-3 w-4/12"
                           />
-                          <div className="hover:cursor-pointer">
+                          <div
+                            className="hover:cursor-pointer"
+                            onClick={() =>
+                              saveTitle(sectionIndex, courseItemIndex)
+                            }
+                          >
+                            <IoPush size={24} />
+                          </div>
+                        </div>
+                        <div className="flex flex-row items-center w-full">
+                          <input
+                            type="text"
+                            placeholder="Description"
+                            onChange={handleDesc}
+                            className="text-accent p-3 font-bold text-lg rounded-lg mb-2 mr-3 w-9/12"
+                          />
+                          <div
+                            className="hover:cursor-pointer"
+                            onClick={() =>
+                              saveDesc(sectionIndex, courseItemIndex)
+                            }
+                          >
                             <IoPush size={24} />
                           </div>
                         </div>
