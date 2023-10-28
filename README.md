@@ -1,4 +1,4 @@
-# apprentice-course
+# Apprentice Admin Portal
 
 The front end interface for mentor of "Apprentice App" to upload and administer their vocational training courses
 
