@@ -3,11 +3,19 @@ import { sections_data } from "../../constants/data";
 import { Lesson, Test } from "../../types/courseItem";
 import Buttons from "../../utilities/ButtonGroup";
 import { IoRemoveCircle, IoPush } from "react-icons/io5";
+import { divIcon } from "leaflet";
 
 const Curriculum = () => {
   const [sections, setSections] = useState(sections_data);
   const [editable, setEditable] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
+  const [contentIndex, setContentIndex] = useState(null);
+  const [contentVisibility, setContentVisibility] = useState(null);
+
+  const handleContent = (courseItemIndex) => {
+    setContentVisibility(!contentVisibility);
+    setContentIndex(courseItemIndex);
+  };
 
   const handleEdit = (courseItemIndex) => {
     setEditable(!editable);
@@ -84,7 +92,7 @@ const Curriculum = () => {
                     </button>
                     <button
                       className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
-                      onClick={() => {}}
+                      onClick={() => handleContent(courseItemIndex)}
                     >
                       + Content
                     </button>
@@ -114,6 +122,33 @@ const Curriculum = () => {
                         <IoPush size={24} />
                       </div>
                     </div>
+                  </div>
+                ) : null}
+
+                {/* appears when + Content btn is clicked */}
+                {courseItemIndex === contentIndex && contentVisibility ? (
+                  <div className="px-3 w-full mt-5 flex flex-row items-start">
+                    <form
+                      action="/api"
+                      method="post"
+                      encType="multipart/form-data"
+                    >
+                      <label
+                        form="file"
+                        className="mr-5 bg-card-color p-2 rounded-lg font-bold"
+                      >
+                        File
+                      </label>
+                      <input
+                        id="file"
+                        name="file"
+                        type="file"
+                        className="rounded-lg bg-light-bg mr-5"
+                      />
+                      <button className=" bg-card-color p-2 rounded-lg font-bold">
+                        Upload
+                      </button>
+                    </form>
                   </div>
                 ) : null}
               </div>
