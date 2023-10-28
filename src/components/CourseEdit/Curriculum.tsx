@@ -127,28 +127,42 @@ const Curriculum = () => {
 
                 {/* appears when + Content btn is clicked */}
                 {courseItemIndex === contentIndex && contentVisibility ? (
-                  <div className="px-3 w-full mt-5 flex flex-row items-start">
-                    <form
-                      action="/api"
-                      method="post"
-                      encType="multipart/form-data"
-                    >
-                      <label
-                        form="file"
-                        className="mr-5 bg-card-color p-2 rounded-lg font-bold"
+                  <div className="px-3 w-full mt-5 flex flex-col justify-start items-start">
+                    <hr className="border-[1px] rounded-xl w-full mb-5" />
+                    <div className="flex flex-col items-start mb-3 w-full">
+                      <h1 className="text-md mb-2  font-semibold">
+                        Upload either a
+                      </h1>
+                      <ul className="flex flex-row items-start justify-evenly w-1/2 list-disc font-normal">
+                        <li>Video</li>
+                        <li>Article</li>
+                        <li>PPT presentation</li>
+                      </ul>
+                    </div>
+                    <div className="flex flex-row items-start">
+                      <form
+                        action="/api"
+                        method="post"
+                        encType="multipart/form-data"
                       >
-                        File
-                      </label>
-                      <input
-                        id="file"
-                        name="file"
-                        type="file"
-                        className="rounded-lg bg-light-bg mr-5"
-                      />
-                      <button className=" bg-card-color p-2 rounded-lg font-bold">
-                        Upload
-                      </button>
-                    </form>
+                        <label
+                          form="file"
+                          className="mr-5 bg-card-color p-2 rounded-lg font-bold"
+                        >
+                          Course Content
+                        </label>
+                        <input
+                          id="file"
+                          name="file"
+                          type="file"
+                          className="rounded-lg bg-light-bg mr-5"
+                        />
+                        <button className=" bg-card-color p-2 rounded-lg font-bold">
+                          Upload
+                        </button>
+                      </form>
+                    </div>
+                    <hr className="border-[1px] rounded-xl mt-6 w-full" />
                   </div>
                 ) : null}
               </div>
