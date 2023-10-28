@@ -12,6 +12,11 @@ const Curriculum = () => {
   const [contentIndex, setContentIndex] = useState(null);
   const [contentVisibility, setContentVisibility] = useState(null);
   const [docPermission, setDocPermission] = useState(null);
+  const [urlPermission, setUrlPermission] = useState(null);
+
+  const handleUrl = () => {
+    setUrlPermission(!urlPermission);
+  };
 
   const handleDoc = () => {
     setDocPermission(!docPermission);
@@ -196,10 +201,7 @@ const Curriculum = () => {
                             method="post"
                             encType="multipart/form-data"
                           >
-                            <label
-                              form="file"
-                              className=""
-                            >
+                            <label form="file" className="">
                               <input
                                 id="file"
                                 name="file"
@@ -211,6 +213,30 @@ const Curriculum = () => {
                               </button>
                             </label>
                           </form>
+                        )}
+                      </div>
+
+                      {/* uploading a url  */}
+                      <div className="flex flex-row items-start mt-3">
+                        <button
+                          onClick={handleUrl}
+                          className="bg-card-color p-2 rounded-lg font-bold mr-5"
+                        >
+                          Add URL Resource
+                        </button>
+                        {urlPermission && (
+                          <div>
+                            <input
+                              id="url"
+                              name="url"
+                              placeholder="URL"
+                              type="url"
+                              className="rounded-lg bg-light-bg mr-5 text-text font-bold p-1"
+                            />
+                            <button className="bg-card-color p-2 rounded-lg font-bold">
+                              Upload
+                            </button>
+                          </div>
                         )}
                       </div>
                     </div>
