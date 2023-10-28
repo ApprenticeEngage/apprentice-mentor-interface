@@ -268,7 +268,10 @@ const Curriculum = () => {
                         onChange={handleDesc}
                         className="text-accent p-3 font-bold text-lg rounded-lg mb-2 mr-3 w-9/12"
                       />
-                      <div className="hover:cursor-pointer" onClick={()=>saveDesc(sectionIndex, courseItemIndex)}>
+                      <div
+                        className="hover:cursor-pointer"
+                        onClick={() => saveDesc(sectionIndex, courseItemIndex)}
+                      >
                         <IoPush size={24} />
                       </div>
                     </div>
@@ -277,124 +280,130 @@ const Curriculum = () => {
 
                 {/* appears when + Content btn is clicked */}
                 {contentVisibilities[courseItemIndex] ? (
-                  <div className="px-3 w-full mt-5 flex flex-col justify-start items-start">
-                    <hr className="border-[1px] rounded-xl w-full mb-5" />
-                    <div className="flex flex-col items-start mb-3 w-full">
-                      <h1 className="text-md mb-2  font-semibold">
-                        <span className="text-xl font-bold mr-9">UPLOAD</span>
-                        Course Content : Could be
-                      </h1>
-                      <ul className="flex flex-row items-start justify-evenly w-1/2 list-disc  text-red font-bold">
-                        <li>Video</li>
-                        <li>Article</li>
-                        <li>PPT presentation</li>
-                      </ul>
-                    </div>
-                    <div className="flex flex-row items-start">
-                      <form
-                        action="/api"
-                        method="post"
-                        encType="multipart/form-data"
-                      >
-                        <label
-                          form="file"
-                          className="mr-5 bg-card-color p-2 rounded-lg font-bold"
-                        >
-                          Course Content
-                        </label>
-                        <input
-                          id="file"
-                          name="file"
-                          type="file"
-                          accept="video/*,.pdf,.odt,.docx,.pptx,.ppt,.md"
-                          className="rounded-lg bg-light-bg mr-5"
-                          onChange={handleFileChange}
-                        />
-                        <button
-                          className=" bg-card-color p-2 rounded-lg font-bold"
-                          onClick={handleSubmit}
-                        >
-                          Upload
-                        </button>
-                        {isError && (
-                          <div className="font-bold text-red text-lg">
-                            {errorMsg}
-                          </div>
-                        )}
-                      </form>
-                    </div>
-                    <hr className="border-[1px] rounded-xl mt-6 w-full" />
-                    <div className="flex flex-col items-start mb-3 w-full mt-3">
+                  courseItem instanceof Lesson ? (
+                    <div className="px-3 w-full mt-5 flex flex-col justify-start items-start">
+                      <hr className="border-[1px] rounded-xl w-full mb-5" />
                       <div className="flex flex-col items-start mb-3 w-full">
                         <h1 className="text-md mb-2  font-semibold">
-                          <span className="text-xl font-bold mr-3">
-                            OPTIONAL
-                          </span>{" "}
-                          Upload Resources related to the Lesson: Could be
+                          <span className="text-xl font-bold mr-9">UPLOAD</span>
+                          Course Content : Could be
                         </h1>
                         <ul className="flex flex-row items-start justify-evenly w-1/2 list-disc  text-red font-bold">
-                          <li>Document</li>
-                          <li>URL</li>
+                          <li>Video</li>
+                          <li>Article</li>
+                          <li>PPT presentation</li>
                         </ul>
                       </div>
-                      {/* form to upload res doc */}
                       <div className="flex flex-row items-start">
-                        <button
-                          onClick={handleDoc}
-                          className="bg-card-color p-2 rounded-lg font-bold mr-5"
+                        <form
+                          action="/api"
+                          method="post"
+                          encType="multipart/form-data"
                         >
-                          Add Document
-                        </button>
-                        {docPermission && (
-                          <form
-                            action="/api"
-                            method="post"
-                            encType="multipart/form-data"
+                          <label
+                            form="file"
+                            className="mr-5 bg-card-color p-2 rounded-lg font-bold"
                           >
-                            <input
-                              id="file"
-                              name="file"
-                              type="file"
-                              className="rounded-lg bg-light-bg mr-5"
-                              onChange={fileValidationDocument}
-                            />
-                            <button className="bg-card-color p-2 rounded-lg font-bold">
-                              Upload
-                            </button>
-                            {isErrorD && (
-                              <div className="font-bold text-red text-lg">
-                                {errorMsgD}
-                              </div>
-                            )}
-                          </form>
-                        )}
+                            Course Content
+                          </label>
+                          <input
+                            id="file"
+                            name="file"
+                            type="file"
+                            accept="video/*,.pdf,.odt,.docx,.pptx,.ppt,.md"
+                            className="rounded-lg bg-light-bg mr-5"
+                            onChange={handleFileChange}
+                          />
+                          <button
+                            className=" bg-card-color p-2 rounded-lg font-bold"
+                            onClick={handleSubmit}
+                          >
+                            Upload
+                          </button>
+                          {isError && (
+                            <div className="font-bold text-red text-lg">
+                              {errorMsg}
+                            </div>
+                          )}
+                        </form>
                       </div>
+                      <hr className="border-[1px] rounded-xl mt-6 w-full" />
+                      <div className="flex flex-col items-start mb-3 w-full mt-3">
+                        <div className="flex flex-col items-start mb-3 w-full">
+                          <h1 className="text-md mb-2  font-semibold">
+                            <span className="text-xl font-bold mr-3">
+                              OPTIONAL
+                            </span>{" "}
+                            Upload Resources related to the Lesson: Could be
+                          </h1>
+                          <ul className="flex flex-row items-start justify-evenly w-1/2 list-disc  text-red font-bold">
+                            <li>Document</li>
+                            <li>URL</li>
+                          </ul>
+                        </div>
+                        {/* form to upload res doc */}
+                        <div className="flex flex-row items-start">
+                          <button
+                            onClick={handleDoc}
+                            className="bg-card-color p-2 rounded-lg font-bold mr-5"
+                          >
+                            Add Document
+                          </button>
+                          {docPermission && (
+                            <form
+                              action="/api"
+                              method="post"
+                              encType="multipart/form-data"
+                            >
+                              <input
+                                id="file"
+                                name="file"
+                                type="file"
+                                className="rounded-lg bg-light-bg mr-5"
+                                onChange={fileValidationDocument}
+                              />
+                              <button className="bg-card-color p-2 rounded-lg font-bold">
+                                Upload
+                              </button>
+                              {isErrorD && (
+                                <div className="font-bold text-red text-lg">
+                                  {errorMsgD}
+                                </div>
+                              )}
+                            </form>
+                          )}
+                        </div>
 
-                      {/* uploading a url  */}
-                      <div className="flex flex-row items-start mt-3">
-                        <button
-                          onClick={handleUrl}
-                          className="bg-card-color p-2 rounded-lg font-bold mr-5"
-                        >
-                          Add URL Resource
-                        </button>
-                        {urlPermission && (
-                          <div>
-                            <input
-                              id="url"
-                              name="url"
-                              placeholder="URL"
-                              type="url"
-                              className="rounded-lg bg-light-bg mr-5 text-text font-bold p-1"
-                            />
-                            <button className="bg-card-color p-2 rounded-lg font-bold">
-                              Upload
-                            </button>
-                          </div>
-                        )}
+                        {/* uploading a url  */}
+                        <div className="flex flex-row items-start mt-3">
+                          <button
+                            onClick={handleUrl}
+                            className="bg-card-color p-2 rounded-lg font-bold mr-5"
+                          >
+                            Add URL Resource
+                          </button>
+                          {urlPermission && (
+                            <div>
+                              <input
+                                id="url"
+                                name="url"
+                                placeholder="URL"
+                                type="url"
+                                className="rounded-lg bg-light-bg mr-5 text-text font-bold p-1"
+                              />
+                              <button className="bg-card-color p-2 rounded-lg font-bold">
+                                Upload
+                              </button>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ) : courseItem instanceof Test ? (
+                    <div>
+                      <h1>hello world</h1>
+                    </div>
+                  ) : null
                 ) : null}
               </div>
             ))}
