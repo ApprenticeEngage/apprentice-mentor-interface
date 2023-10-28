@@ -157,6 +157,25 @@ const Curriculum = () => {
     setEditable(true);
   };
 
+  //setting desc
+  const [desc, setDesc] = useState(false);
+  const [descContent, setDescContent] = useState(null);
+
+  const handleDesc = (e) => {
+    setDescContent(e.target.value);
+  };
+
+  const saveDesc = (sectionIndex, courseItemIndex) => {
+    const newSections = [...sections];
+    newSections[sectionIndex].courseItems[courseItemIndex].desc = descContent;
+    setSections(newSections);
+
+    setDesc(true);
+
+    // Reset the editable state
+    setEditable(true);
+  };
+
   return (
     <div className="w-full flex flex-col justify-start items-start text-text">
       <div className="p-12 font-bold mb-2">
@@ -217,6 +236,13 @@ const Curriculum = () => {
                     </button>
                   </div>
                 </div>
+                {desc && (
+                  <div className="flex flex-col text-text items-start">
+                    <hr className="border-[1px] rounded-xl w-full mt-5" />
+                    <h1 className="text-xl font-bold text-text">Description</h1>
+                    <h1 className="font-normal text-lg">{courseItem.desc}</h1>
+                  </div>
+                )}
 
                 {/* appears when edit btn is clicked */}
                 {courseItemIndex === editingIndex && editable ? (
@@ -239,9 +265,10 @@ const Curriculum = () => {
                       <input
                         type="text"
                         placeholder="Description"
+                        onChange={handleDesc}
                         className="text-accent p-3 font-bold text-lg rounded-lg mb-2 mr-3 w-9/12"
                       />
-                      <div className="hover:cursor-pointer">
+                      <div className="hover:cursor-pointer" onClick={()=>saveDesc(sectionIndex, courseItemIndex)}>
                         <IoPush size={24} />
                       </div>
                     </div>

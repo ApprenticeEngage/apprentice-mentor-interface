@@ -51,7 +51,7 @@ export const sections_data: Section[] = [
     name: "Instruction",
     learningOutcome: "Learning outcome of Section 1",
     courseItems: [
-      new Lesson("Hello World", "Content URL", "Empty!", []),
+      new Lesson("Hello World", "Content URL", "Description is beautiful", []),
       new Test("FOP", "Test Topic", "23-2-10"),
     ],
   },
