@@ -16,21 +16,27 @@ const Curriculum = () => {
   const [docPermission, setDocPermission] = useState(null);
   const [urlPermission, setUrlPermission] = useState(null);
 
-  //for file validations
+  //for file validation : document
+  const [fileD, setFileD] = useState(null);
+  const [isErrorD, setIsErrorD] = useState(false);
+  const [errorMsgD, setErrorMsgD] = useState("");
+  const [isSuccessD, setIsSuccessD] = useState(false);
+
+  //for file validations : Course
   const [file, setFile] = useState(null);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
+  //for course item validation
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    console.log(selectedFile?.type);
 
     setIsSuccess(false);
 
     // Checking if the file type is allowed or not
     // ,.pdf,.odt,.docx,.pptx,.ppt,.md
-    const allowedTypes = [
+    const allowedTypesCourse = [
       "video/mp4",
       "video/mov",
       "video/wmv",
@@ -38,11 +44,12 @@ const Curriculum = () => {
       "video/mkv",
       "video/webm",
       "application/pdf",
+      "text/markdown",
       "application/vnd.oasis.opendocument.text",
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     ];
-    if (!allowedTypes.includes(selectedFile?.type)) {
+    if (!allowedTypesCourse.includes(selectedFile?.type)) {
       setIsError(true);
       setErrorMsg(
         "Only PDF, ODT, DOCX, PPTX, PPT, MP4, and MD files are allowed."
@@ -68,6 +75,32 @@ const Curriculum = () => {
 
     setIsError(false);
     setIsSuccess(true);
+  };
+
+  //for document validation
+
+  const fileValidationDocument = (event) => {
+    const selectedFile = event.target.files[0];
+
+    setIsSuccessD(false);
+
+    // Checking if the file type is allowed or not
+    // ,.pdf,.odt,.docx,.pptx,.ppt,.md
+    const allowedTypesDoc = [
+      "application/pdf",
+      "text/markdown",
+      "application/vnd.oasis.opendocument.text",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ];
+    if (!allowedTypesDoc.includes(selectedFile?.type)) {
+      setIsErrorD(true);
+      setErrorMsgD("Only PDF, ODT, DOCX, PPTX, PPT and MD files are allowed.");
+      return;
+    } else {
+      setIsErrorD(false);
+      setFileD(selectedFile);
+    }
   };
 
   const handleUrl = () => {
@@ -229,17 +262,16 @@ const Curriculum = () => {
                           className="rounded-lg bg-light-bg mr-5"
                           onChange={handleFileChange}
                         />
-                        {isError && (
-                          <div className="error-text">{errorMsg}</div>
-                        )}
                         <button
                           className=" bg-card-color p-2 rounded-lg font-bold"
                           onClick={handleSubmit}
                         >
                           Upload
                         </button>
-                        {isSuccess && (
-                          <div className="success-text">Valid File Type</div>
+                        {isError && (
+                          <div className="font-bold text-red text-lg">
+                            {errorMsg}
+                          </div>
                         )}
                       </form>
                     </div>
@@ -271,17 +303,21 @@ const Curriculum = () => {
                             method="post"
                             encType="multipart/form-data"
                           >
-                            <label form="file" className="">
-                              <input
-                                id="file"
-                                name="file"
-                                type="file"
-                                className="rounded-lg bg-light-bg mr-5"
-                              />
-                              <button className="bg-card-color p-2 rounded-lg font-bold">
-                                Upload
-                              </button>
-                            </label>
+                            <input
+                              id="file"
+                              name="file"
+                              type="file"
+                              className="rounded-lg bg-light-bg mr-5"
+                              onChange={fileValidationDocument}
+                            />
+                            <button className="bg-card-color p-2 rounded-lg font-bold">
+                              Upload
+                            </button>
+                            {isErrorD && (
+                              <div className="font-bold text-red text-lg">
+                                {errorMsgD}
+                              </div>
+                            )}
                           </form>
                         )}
                       </div>
