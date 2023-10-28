@@ -236,7 +236,7 @@ const Curriculum = () => {
                     </button>
                   </div>
                 </div>
-                {desc && (
+                {courseItemIndex == editingIndex && desc && (
                   <div className="flex flex-col text-text items-start">
                     <hr className="border-[1px] rounded-xl w-full mt-5" />
                     <h1 className="text-xl font-bold text-text">Description</h1>
