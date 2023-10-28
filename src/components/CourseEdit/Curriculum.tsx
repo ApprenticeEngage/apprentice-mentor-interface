@@ -180,9 +180,13 @@ const Curriculum = () => {
   };
 
   //test date
-  const [testDate, setTestDate] = useState({});
+  const [testDate, setTestDate] = useState(null);
 
-
+  const handleDateChange = (newDate) => {
+    // Set the new date in the state
+    setTestDate(newDate);
+    console.log(testDate);
+  };
 
   return (
     <div className="w-full flex flex-col justify-start items-start text-text">
@@ -431,7 +435,7 @@ const Curriculum = () => {
                         <div className="flex flex-row items-center w-full">
                           <DatePicker
                             label="Basic date picker"
-                            
+                            onChange={handleDateChange}
                           />
                           <div className="hover:cursor-pointer ml-3">
                             <IoPush size={24} />
