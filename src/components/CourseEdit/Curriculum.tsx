@@ -140,6 +140,23 @@ const Curriculum = () => {
     setSections(newSections);
   };
 
+  //updating the title of the courseItem
+  const [courseItemtitle, setCourseItemTitle] = useState(null);
+
+  const handleTitleChange = (e) => {
+    setCourseItemTitle(e.target.value);
+  };
+
+  const saveTitle = (sectionIndex, courseItemIndex) => {
+    const newSections = [...sections];
+    newSections[sectionIndex].courseItems[courseItemIndex].title =
+      courseItemtitle;
+    setSections(newSections);
+
+    // Reset the editable state
+    setEditable(true);
+  };
+
   return (
     <div className="w-full flex flex-col justify-start items-start text-text">
       <div className="p-12 font-bold mb-2">
@@ -208,9 +225,13 @@ const Curriculum = () => {
                       <input
                         type="text"
                         placeholder="title"
+                        onChange={handleTitleChange}
                         className="text-accent p-3 font-bold text-lg rounded-lg mb-2 mr-3 w-4/12"
                       />
-                      <div className="hover:cursor-pointer">
+                      <div
+                        className="hover:cursor-pointer"
+                        onClick={() => saveTitle(sectionIndex, courseItemIndex)}
+                      >
                         <IoPush size={24} />
                       </div>
                     </div>
