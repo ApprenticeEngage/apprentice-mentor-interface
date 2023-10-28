@@ -10,7 +10,9 @@ const Curriculum = () => {
   const [editable, setEditable] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
   const [contentIndex, setContentIndex] = useState(null);
-  const [contentVisibility, setContentVisibility] = useState(null);
+  const [contentVisibilities, setContentVisibilities] = useState(
+    Array(sections.length).fill(false)
+  );
   const [docPermission, setDocPermission] = useState(null);
   const [urlPermission, setUrlPermission] = useState(null);
 
@@ -23,7 +25,10 @@ const Curriculum = () => {
   };
 
   const handleContent = (courseItemIndex) => {
-    setContentVisibility(!contentVisibility);
+    const newContentVisibilities = [...contentVisibilities];
+    newContentVisibilities[courseItemIndex] =
+      !newContentVisibilities[courseItemIndex];
+    setContentVisibilities(newContentVisibilities);
     setContentIndex(courseItemIndex);
   };
 
@@ -136,7 +141,7 @@ const Curriculum = () => {
                 ) : null}
 
                 {/* appears when + Content btn is clicked */}
-                {courseItemIndex === contentIndex && contentVisibility ? (
+                {contentVisibilities[courseItemIndex] ? (
                   <div className="px-3 w-full mt-5 flex flex-col justify-start items-start">
                     <hr className="border-[1px] rounded-xl w-full mb-5" />
                     <div className="flex flex-col items-start mb-3 w-full">
