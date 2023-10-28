@@ -16,6 +16,60 @@ const Curriculum = () => {
   const [docPermission, setDocPermission] = useState(null);
   const [urlPermission, setUrlPermission] = useState(null);
 
+  //for file validations
+  const [file, setFile] = useState(null);
+  const [isError, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    console.log(selectedFile?.type);
+
+    setIsSuccess(false);
+
+    // Checking if the file type is allowed or not
+    // ,.pdf,.odt,.docx,.pptx,.ppt,.md
+    const allowedTypes = [
+      "video/mp4",
+      "video/mov",
+      "video/wmv",
+      "video/avi",
+      "video/mkv",
+      "video/webm",
+      "application/pdf",
+      "application/vnd.oasis.opendocument.text",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ];
+    if (!allowedTypes.includes(selectedFile?.type)) {
+      setIsError(true);
+      setErrorMsg(
+        "Only PDF, ODT, DOCX, PPTX, PPT, MP4, and MD files are allowed."
+      );
+      return;
+    } else {
+      setIsError(false);
+      setFile(selectedFile);
+    }
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (isError) return;
+    setErrorMsg("");
+
+    // Checking if the file has been selected
+    if (!file) {
+      setIsError(true);
+      setErrorMsg("Please select a file.");
+      return;
+    }
+
+    setIsError(false);
+    setIsSuccess(true);
+  };
+
   const handleUrl = () => {
     setUrlPermission(!urlPermission);
   };
@@ -171,11 +225,22 @@ const Curriculum = () => {
                           id="file"
                           name="file"
                           type="file"
+                          accept="video/*,.pdf,.odt,.docx,.pptx,.ppt,.md"
                           className="rounded-lg bg-light-bg mr-5"
+                          onChange={handleFileChange}
                         />
-                        <button className=" bg-card-color p-2 rounded-lg font-bold">
+                        {isError && (
+                          <div className="error-text">{errorMsg}</div>
+                        )}
+                        <button
+                          className=" bg-card-color p-2 rounded-lg font-bold"
+                          onClick={handleSubmit}
+                        >
                           Upload
                         </button>
+                        {isSuccess && (
+                          <div className="success-text">Valid File Type</div>
+                        )}
                       </form>
                     </div>
                     <hr className="border-[1px] rounded-xl mt-6 w-full" />
