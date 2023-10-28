@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { sections_data } from "../../constants/data";
-import { Lesson, Test } from "../../types/courseItem";
+import { CourseItem, Lesson, Test } from "../../types/courseItem";
 import Buttons from "../../utilities/ButtonGroup";
 import { IoRemoveCircle, IoPush } from "react-icons/io5";
 import { divIcon } from "leaflet";
@@ -11,6 +11,11 @@ const Curriculum = () => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [contentIndex, setContentIndex] = useState(null);
   const [contentVisibility, setContentVisibility] = useState(null);
+  const [docPermission, setDocPermission] = useState(null);
+
+  const handleDoc = () => {
+    setDocPermission(!docPermission);
+  };
 
   const handleContent = (courseItemIndex) => {
     setContentVisibility(!contentVisibility);
@@ -176,6 +181,37 @@ const Curriculum = () => {
                           <li>Document</li>
                           <li>URL</li>
                         </ul>
+                      </div>
+                      {/* form to upload res doc */}
+                      <div className="flex flex-row items-start">
+                        <button
+                          onClick={handleDoc}
+                          className="bg-card-color p-2 rounded-lg font-bold mr-5"
+                        >
+                          Add Document
+                        </button>
+                        {docPermission && (
+                          <form
+                            action="/api"
+                            method="post"
+                            encType="multipart/form-data"
+                          >
+                            <label
+                              form="file"
+                              className=""
+                            >
+                              <input
+                                id="file"
+                                name="file"
+                                type="file"
+                                className="rounded-lg bg-light-bg mr-5"
+                              />
+                              <button className="bg-card-color p-2 rounded-lg font-bold">
+                                Upload
+                              </button>
+                            </label>
+                          </form>
+                        )}
                       </div>
                     </div>
                   </div>
