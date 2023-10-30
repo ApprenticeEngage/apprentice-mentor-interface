@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { sections_data } from "../../constants/data";
+import { addSection, newSection, sections_data } from "../../constants/data";
 import { CourseItem, Lesson, Test } from "../../types/courseItem";
 import Buttons from "../../utilities/ButtonGroup";
 import { IoRemoveCircle, IoPush } from "react-icons/io5";
@@ -30,6 +30,13 @@ const Curriculum = () => {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+
+  //adding sections
+  const addSection = () => {
+    const newSections = [...sections];
+    newSections.push(newSection);
+    setSections(newSections);
+  };
 
   //for course item validation
   const handleFileChange = (event) => {
@@ -118,7 +125,7 @@ const Curriculum = () => {
 
   const [sectionActive, setSectionActive] = useState(0);
 
-  const handleContent = (sectionIndex: number , courseItemIndex) => {
+  const handleContent = (sectionIndex: number, courseItemIndex) => {
     const newContentVisibilities = [...contentVisibilities];
     newContentVisibilities[courseItemIndex] =
       !newContentVisibilities[courseItemIndex];
@@ -127,7 +134,7 @@ const Curriculum = () => {
     setSectionActive(sectionIndex);
   };
 
-  const handleEdit = (sectionIndex:number , courseItemIndex) => {
+  const handleEdit = (sectionIndex: number, courseItemIndex) => {
     setEditable(!editable);
     setEditingIndex(courseItemIndex);
     setSectionActive(sectionIndex);
@@ -188,7 +195,7 @@ const Curriculum = () => {
   //test states
   const [editTest, setEditTest] = useState(false);
 
-  const handleEditTest = (sectionIndex:number,  courseItemIndex) => {
+  const handleEditTest = (sectionIndex: number, courseItemIndex) => {
     const newContentVisibilities = [...contentVisibilities];
     newContentVisibilities[courseItemIndex] =
       !newContentVisibilities[courseItemIndex];
@@ -276,7 +283,9 @@ const Curriculum = () => {
                       <div>
                         <button
                           className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
-                          onClick={() => handleEditTest(sectionIndex, courseItemIndex)}
+                          onClick={() =>
+                            handleEditTest(sectionIndex, courseItemIndex)
+                          }
                         >
                           Edit Test
                         </button>
@@ -294,7 +303,8 @@ const Curriculum = () => {
                   )}
 
                   {/* appears when edit btn is clicked */}
-                  {sectionActive == sectionIndex && courseItemIndex === editingIndex &&
+                  {sectionActive == sectionIndex &&
+                  courseItemIndex === editingIndex &&
                   courseItem instanceof Lesson &&
                   editable ? (
                     <div className="mt-5 flex flex-col items-start px-3 w-full">
@@ -334,7 +344,8 @@ const Curriculum = () => {
                   ) : null}
 
                   {/* appears when + Content btn is clicked */}
-                  {sectionActive == sectionIndex && contentVisibilities[courseItemIndex] ? (
+                  {sectionActive == sectionIndex &&
+                  contentVisibilities[courseItemIndex] ? (
                     courseItem instanceof Lesson ? (
                       <div className="px-3 w-full mt-5 flex flex-col justify-start items-start">
                         <hr className="border-[1px] rounded-xl w-full mb-5" />
@@ -516,6 +527,14 @@ const Curriculum = () => {
             </div>
           ))}
         </div>
+        <button
+          className="m-4 bg-accent p-2 rounded-lg text-text font-bold text-lg"
+          onClick={() => {
+            addSection();
+          }}
+        >
+          Add Section
+        </button>
       </LocalizationProvider>
     </div>
   );

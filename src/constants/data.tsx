@@ -62,3 +62,18 @@ export const sections_data: Section[] = [
     courseItems: [],
   },
 ];
+
+
+export function addSection(): void {
+  sections_data.push(newSection);
+}
+
+// Example of how to use the addSection function
+export const newSection = {
+  title: "Section 3",
+  name: "New Section",
+  learningOutcome: "Learning outcome of New Section",
+  courseItems: [
+    new Lesson("New Lesson", "New Content URL", "New Description", []),
+  ],
+};
