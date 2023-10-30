@@ -114,17 +114,23 @@ const Curriculum = () => {
     setDocPermission(!docPermission);
   };
 
-  const handleContent = (courseItemIndex) => {
+  //handling edit and content indices
+
+  const [sectionActive, setSectionActive] = useState(0);
+
+  const handleContent = (sectionIndex: number , courseItemIndex) => {
     const newContentVisibilities = [...contentVisibilities];
     newContentVisibilities[courseItemIndex] =
       !newContentVisibilities[courseItemIndex];
     setContentVisibilities(newContentVisibilities);
     setContentIndex(courseItemIndex);
+    setSectionActive(sectionIndex);
   };
 
-  const handleEdit = (courseItemIndex) => {
+  const handleEdit = (sectionIndex:number , courseItemIndex) => {
     setEditable(!editable);
     setEditingIndex(courseItemIndex);
+    setSectionActive(sectionIndex);
   };
 
   const addChapter = (sectionIndex) => {
@@ -182,7 +188,7 @@ const Curriculum = () => {
   //test states
   const [editTest, setEditTest] = useState(false);
 
-  const handleEditTest = (courseItemIndex) => {
+  const handleEditTest = (sectionIndex:number,  courseItemIndex) => {
     const newContentVisibilities = [...contentVisibilities];
     newContentVisibilities[courseItemIndex] =
       !newContentVisibilities[courseItemIndex];
@@ -190,6 +196,7 @@ const Curriculum = () => {
     setContentIndex(courseItemIndex);
     setEditable(!editable);
     setEditingIndex(courseItemIndex);
+    setSectionActive(sectionIndex);
   };
   //test date
   const [testDate, setTestDate] = useState(null);
@@ -250,13 +257,17 @@ const Curriculum = () => {
                       <div>
                         <button
                           className=" bg-accent p-2 rounded-lg text-text font-bold text-lg mr-3"
-                          onClick={() => handleEdit(courseItemIndex)}
+                          onClick={() =>
+                            handleEdit(sectionIndex, courseItemIndex)
+                          }
                         >
                           Edit Title
                         </button>
                         <button
                           className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
-                          onClick={() => handleContent(courseItemIndex)}
+                          onClick={() =>
+                            handleContent(sectionIndex, courseItemIndex)
+                          }
                         >
                           + Content
                         </button>
@@ -265,7 +276,7 @@ const Curriculum = () => {
                       <div>
                         <button
                           className=" bg-accent p-2 rounded-lg text-text font-bold text-lg"
-                          onClick={() => handleEditTest(courseItemIndex)}
+                          onClick={() => handleEditTest(sectionIndex, courseItemIndex)}
                         >
                           Edit Test
                         </button>
@@ -283,7 +294,9 @@ const Curriculum = () => {
                   )}
 
                   {/* appears when edit btn is clicked */}
-                  {courseItemIndex === editingIndex && (courseItem instanceof Lesson) && editable ? (
+                  {sectionActive == sectionIndex && courseItemIndex === editingIndex &&
+                  courseItem instanceof Lesson &&
+                  editable ? (
                     <div className="mt-5 flex flex-col items-start px-3 w-full">
                       <div className="flex flex-row items-center w-full">
                         <input
@@ -321,7 +334,7 @@ const Curriculum = () => {
                   ) : null}
 
                   {/* appears when + Content btn is clicked */}
-                  {contentVisibilities[courseItemIndex] ? (
+                  {sectionActive == sectionIndex && contentVisibilities[courseItemIndex] ? (
                     courseItem instanceof Lesson ? (
                       <div className="px-3 w-full mt-5 flex flex-col justify-start items-start">
                         <hr className="border-[1px] rounded-xl w-full mb-5" />
