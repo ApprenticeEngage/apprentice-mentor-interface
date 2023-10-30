@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 type CourseTileProps = {
   key: string;
@@ -7,6 +8,7 @@ type CourseTileProps = {
 };
 
 const CourseTile: React.FC<CourseTileProps> = ({ title, status }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex bg-card-dark w-full text-text rounded-lg mb-4">
       <div className="banner rounded-lg bg-temp w-2/12"></div>
@@ -16,7 +18,12 @@ const CourseTile: React.FC<CourseTileProps> = ({ title, status }) => {
           <span className="mr-2 text-sm font-thin">{status}</span>
         </div>
         <div className="mt-2">
-          <button className="bg-accent text-text p-2 mb-1 rounded-md font-extrabold">
+          <button
+            className="bg-accent text-text p-2 mb-1 rounded-md font-extrabold"
+            onClick={() => {
+              navigate('/courseEdit', { replace: false });
+            }}
+          >
             Edit/Manage
           </button>
         </div>
