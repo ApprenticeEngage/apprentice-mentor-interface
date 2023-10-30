@@ -8,7 +8,7 @@ type CourseTileProps = {
 
 const CourseTile: React.FC<CourseTileProps> = ({ title, status }) => {
   return (
-    <div className="flex bg-card-dark w-full text-white rounded-lg mb-4">
+    <div className="flex bg-card-dark w-full text-text rounded-lg mb-4">
       <div className="banner rounded-lg bg-temp w-2/12"></div>
       <div className="text-center p-4 flex justify-between items-center w-full">
         <div className="flex flex-col items-start">
@@ -16,7 +16,7 @@ const CourseTile: React.FC<CourseTileProps> = ({ title, status }) => {
           <span className="mr-2 text-sm font-thin">{status}</span>
         </div>
         <div className="mt-2">
-          <button className="bg-accent text-white p-2 mb-1 rounded-md font-extrabold">
+          <button className="bg-accent text-text p-2 mb-1 rounded-md font-extrabold">
             Edit/Manage
           </button>
         </div>
