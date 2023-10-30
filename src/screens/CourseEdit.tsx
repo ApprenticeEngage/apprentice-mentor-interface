@@ -5,13 +5,11 @@ import { jsx } from "@emotion/react";
 import Schedule from "../components/CourseEdit/Schedule";
 import Curriculum from "../components/CourseEdit/Curriculum";
 
-
-
 const CourseEdit = () => {
-  const [selectedSection, setSelectedSection] = useState(""); // State to keep track of the selected section
+  const [selectedSection, setSelectedSection] = useState("audience"); // State to keep track of the selected section
 
   // Function to handle the section click
-  const handleSectionClick = (section:jsx) => {
+  const handleSectionClick = (section: jsx) => {
     setSelectedSection(section);
   };
 
@@ -66,7 +64,9 @@ const CourseEdit = () => {
                   className={`p-1 ${
                     selectedSection === "curriculum" ? "bg-accent" : ""
                   } font-semibold hover:bg-accent`}
-                  onClick={() => handleSectionClick("curriculum")}
+                  onClick={() => {
+                    handleSectionClick("curriculum");
+                  }}
                 >
                   Curriculum
                 </a>
@@ -98,7 +98,13 @@ const CourseEdit = () => {
         </div>
 
         <div className="w-full bg-primary ml-2 shadow-xl mb-10">
-          <Curriculum />
+          {selectedSection === "audience" ? (
+            <Audience />
+          ) : selectedSection === "schedule" ? (
+            <Schedule />
+          ) : selectedSection === "curriculum" ? (
+            <Curriculum />
+          ) : null}
         </div>
       </div>
     </div>
